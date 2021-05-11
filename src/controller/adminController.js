@@ -13,6 +13,7 @@ exports.getAllService = async (req, res) => {
 }
 
 exports.createService = async (req, res) => {
+    let correlationId = req.headers['x-correlation-id'];
     try {
         const { name, img, price } = req.body;
 
@@ -32,8 +33,10 @@ exports.createService = async (req, res) => {
         //     )
         // }
 
-    } catch (e) {
-        res.status(501).json(e)
+    } catch (err) {
+        res.status(501).json({
+            correlationId: correlationId, error: err.message
+        })
     }
 }
 
