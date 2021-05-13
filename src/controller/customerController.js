@@ -19,6 +19,53 @@ exports.createUser = async (req, res) => {
     }
 }
 
+exports.updateUser = async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        const  _id = req.params.id;
+
+
+        let findUser = await User.findByIdAndUpdate(
+            {_id},
+            { $set: {
+                name,
+                email
+            }}
+        )
+        if (findUser) {
+            res.status(201).json(findUser)
+        }
+    } catch (e) {
+        res.status(501).json(e)
+    }
+}
+
+exports.deleteUser = async(req, res) => {
+    try{
+        const _id = req.params.id;
+        await User.findByIdAndDelete({ _id })
+        res.status(204).json({ msg: "deleted"})
+
+    }
+    catch (e) {
+        res.status(501).json(e)
+    }
+}
+
+exports.getUser = async (req, res) => {
+    try {
+        const _id = req.params.id;
+        let user = User.findById(_id)
+        if (user) {
+            res.status(201).json(user)
+        }
+    } catch (e) {
+        res.status(501).json(e)
+    }
+}
+
+
+
 exports.postPayment = async (req, res) => {
     const { user_id, payment_id, amount } = req.body
     try {
