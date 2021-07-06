@@ -1,19 +1,26 @@
 const { Schema, model } = require('mongoose')
 
-const orderSchema = new Schema({
-    user_id: {
-        type: String,
-        required: true
+const orderSchema = new Schema(
+    {
+        invoice_id: {
+            id: String,
+            required: true,
+            trim: true
+        },
+        user_id: {
+            type: String,
+            required: true
+        },
+        service_id: {
+            type: String,
+            required: true
+        },
+        status: {
+            type: String,
+            enum: ["pending", "processing", "complete"],
+            default: "pending"
+        }
     },
-    service_id: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: Number,
-        default: 0
-    }
-},
     { timestamps: true }
 )
 
