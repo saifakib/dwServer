@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const mongoose = require('mongoose')
 
 
@@ -17,6 +18,9 @@ app.use(cors());
 // request parsers
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
+
+// set static folder
+app.use(express.static(path.join(__dirname, "public")))
 
 //routing setup
 app.use('/', Routes)

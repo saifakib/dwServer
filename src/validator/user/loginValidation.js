@@ -7,18 +7,18 @@ const loginValidator = [
         .withMessage("Mobile Number or Email Required"),
 
     body('password')
-        .isLength({ min: 6 })
+        .isLength({ min: 1 })
         .withMessage("Password must be required")
 ]
 
 
 // user login validation error handler
-const loginValidationHandler = ( req, res, next ) => {
+const loginValidationHandler = (req, res, next) => {
 
     const errors = validationResult(req)
     const mappedErrors = errors.mapped()
 
-    if( Object.keys(mappedErrors).length == 0 ) {
+    if (Object.keys(mappedErrors).length == 0) {
         next()
     } else {
         res.status(500).json({
@@ -28,7 +28,8 @@ const loginValidationHandler = ( req, res, next ) => {
 }
 
 
-module.exports = [
+module.exports = {
     loginValidator,
     loginValidationHandler
-]
+}
+

@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose')
 const orderSchema = new Schema(
     {
         invoice_id: {
-            id: String,
+            type: String,
             required: true,
             trim: true
         },
