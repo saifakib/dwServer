@@ -1,18 +1,21 @@
 const router = require('express').Router()
-// const admin = require('./adminRoute')
-// const customer = require('./customerRoute')
+const adminRoute = require('./adminRoute')
+const customer = require('./customerRoute')
 const auth = require('./authRoutes')
 // const header = require('../utils/setHeader')
 const {
     homeController,
-    //postContactController
+    postContactController
 } = require('../controller/publicController')
 
-router.use('/auth/user', auth)
-// router.use('/admin', admin)
-// router.use('/customer', customer)
+const { checkToken, requireRole } = require('../middleware/auth')
 
-// router.post('/contact', postContactController)
+router.use('/auth/user', auth)
+router.use('/admin', [checkToken, requireRole(['admin','customer'])], adminRoute)
+router.use('/customer',[checkToken, requireRole(['admin','customer'])], customer)
+
+
+router.post('/contact', postContactController)
 router.get('/', homeController)
 
 // router.get('*', (req, res) => {

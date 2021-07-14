@@ -16,6 +16,11 @@ const reviewSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    display: {
+        type: Boolean,
+        enum: [true, false],
+        default: false
     }
 },
     { timestamps: true }
