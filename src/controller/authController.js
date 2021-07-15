@@ -96,7 +96,17 @@ exports.loginController = async (req, res, next) => {
     }
 }
 
+exports.getUser = async (req, res) => {
+    try {
+        let users = await User.find({})
+        res.status(200).json({ users });
+
+    } catch (e) {
+        res.status(501).json({ errors: [{ msg: "Internal Server Error!"}]})
+    }
+}
+
 
 exports.logout = async (req, res, next) => {
-
+    return 0
 }
