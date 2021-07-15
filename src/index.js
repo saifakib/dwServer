@@ -8,12 +8,14 @@ const mongoose = require('mongoose')
 
 // internal imports 
 const { notFoundHandler, errorHandler } = require('./middleware/common/errorHandler')
+const morgan = require('./middleware/common/useMorgan')
 const Routes = require('./routes')
 
 
 const app = express();
 
 app.use(cors());
+morgan(app)
 
 // request parsers
 app.use(express.urlencoded({ extended: true }))
