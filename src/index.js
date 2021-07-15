@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 // internal imports 
 const { notFoundHandler, errorHandler } = require('./middleware/common/errorHandler')
 const morgan = require('./middleware/common/useMorgan')
+const logger = require('./logger')
 const Routes = require('./routes')
 
 
@@ -41,11 +42,12 @@ mongoose
     .then(() => {
         // server listen
         app.listen(process.env.PORT, () => {
-            console.log(`Server Listen On ${process.env.PORT}`)
+            logger.info(`Server Listen On ${process.env.PORT}`)
+            logger.error("this is warn test")
         })
     })
     .catch(err => {
-        console.log(err.message)
+        logger.error(err.message)
     })
 
 
