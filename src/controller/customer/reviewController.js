@@ -15,6 +15,6 @@ exports.postReview = async (req, res) => {
             res.status(201).json({ msg: "Review submitted", review: response })
         }
     } catch (e) {
-        res.status(501).json(e)
+        res.status(500).json({ errors: [{ msg: 'Server error!' }] });
     }
 }

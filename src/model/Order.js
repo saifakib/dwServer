@@ -8,11 +8,18 @@ const orderSchema = new Schema(
             trim: true
         },
         user_id: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'User',
             required: true
         },
         service_id: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Service',
+            required: true
+        },
+        payment_id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Payment',
             required: true
         },
         status: {

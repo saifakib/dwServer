@@ -35,13 +35,3 @@ const { Order,Payment, Review, User } = require('../../model')
 //         res.status(501).json(e)
 //     }
 // }
-
-// exports.getOrderedList = async (req, res) => {
-//     const { user_id } = req.body
-//     try {
-//         const orders = await Order.find({ user_id: user_id })
-//         res.status(200).json({orders})
-//     } catch (e) {
-//         res.status(501).json(e)
-//     }
-// }
