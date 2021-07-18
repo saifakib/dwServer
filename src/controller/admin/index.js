@@ -1,30 +1,6 @@
 const { Service, User, Order, Review, Contact, Payment } = require('../../model')
 
 
-//Order Section
-exports.getAllOrder = async (req, res) => {
-    try {
-        const orders = await Order.find({})         // desc order or status 1 & 2
-        res.status(200).json({orders})
-    } catch (e) {
-        res.status(501).json(e)
-    }
-}
-exports.editOrder = async (req, res) => {
-    const { id, status } = req.body;
-
-    try {
-        await Order.findOneAndUpdate(
-            { _id: id },
-            { $set: { status } }
-        )
-        res.status(200).json({ msg: 'Order Updated' })
-
-    } catch (e) {
-        res.status(501).json(e)
-    }
-}
-
 
 //User Section
 exports.getAllUser = async (req, res) => {

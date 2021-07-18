@@ -14,6 +14,15 @@ exports.homeController = async (req, res) => {
     }
 }
 
+exports.getSingleService = async (req, res) => {
+    try {
+        const service = await Service.find({ _id: req.params.id })
+        res.status(200).json({ services })
+    } catch (e) {
+        res.status(500).json({ errors: [{ msg: 'Server error!' }] });
+    }
+}
+
 exports.postContactController = async (req, res) => {
     const { name, email, description } = req.body
     try {
@@ -24,9 +33,9 @@ exports.postContactController = async (req, res) => {
         })
 
         await contact.save();
-        res.status(200).json({ msg: "Contact Submited"});
+        res.status(200).json({ msg: "Contact Submited" });
 
     } catch (e) {
-        res.status(501).json({ errors: [{ msg: "Internal Server Error!"}]})
+        res.status(501).json({ errors: [{ msg: "Internal Server Error!" }] })
     }
 }
