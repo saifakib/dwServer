@@ -1,36 +1,29 @@
+/**
+ * Route /admin/
+ */
+
 const router = require('express').Router()
 
+
 // const {
-//     getAllOrder,
-//     editOrder,
-//     getAllUser,
-//     getUserOrder,
-//     getAllReviews,
-//     removeReview,
-//     getAllContact,
 //     getAllPayment
-// } = require('../../controller/adminController')
+// } = require('../../controller/admin')
 
 const serviceRoute = require('./serviceRoute')
 const reviewRoute = require('./reviewRoute')
 const contactRoute = require('./contactRoute')
+const orderRoute = require('./orderRoute')
+const userRoute = require('./userRoute')
+
 
 // Service Route
 router.use('/service', serviceRoute)
+router.use('/order', orderRoute)
+router.use('/user', userRoute)
 router.use('/review', reviewRoute)
 router.use('/contact', contactRoute)
 
 
-// router.get('/orders', getAllOrder)
-// router.patch('/order/edit', editOrder)
-
-// router.get('/users', getAllUser)
-// router.get('/user/order', getUserOrder)
-
-// router.get('/reviews', getAllReviews)
-// router.delete('/review/delete', removeReview)
-
-// router.get('/contacts', getAllContact)
 
 // router.get('/payments', getAllPayment)
 

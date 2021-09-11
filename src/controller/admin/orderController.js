@@ -10,6 +10,8 @@ exports.getAllOrder = async (req, res) => {
         res.status(501).json({ errors: [{ msg: 'Server error!' }] });
     }
 }
+
+
 exports.editOrder = async (req, res) => {
     const { id, status } = req.body;
     try {

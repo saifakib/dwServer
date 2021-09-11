@@ -1,3 +1,7 @@
+/**
+ * Route /admin/contact/
+ */
+
 const router = require('express').Router()
 const {
     getAllContact,

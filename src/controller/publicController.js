@@ -17,7 +17,7 @@ exports.homeController = async (req, res) => {
 exports.getSingleService = async (req, res) => {
     try {
         const service = await Service.find({ _id: req.params.id })
-        res.status(200).json({ services })
+        res.status(200).json({ service })
     } catch (e) {
         res.status(500).json({ errors: [{ msg: 'Server error!' }] });
     }

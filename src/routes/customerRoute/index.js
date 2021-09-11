@@ -1,17 +1,23 @@
+/**
+ * Route /customer/
+ */
+
+
 const router = require('express').Router()
-const {
+// const {
     // createUser,
     // postPayment,
-    // getOrderedList,
-    postReview
-} = require('../../controller/customer/reviewController')
+// } = require('../../controller/customer/reviewController')
+
+const orderRoute = require('./orderRoute')
+const reviewRoute = require('./reviewRoute')
+
+router.use('/order', orderRoute)
+router.use('/review', reviewRoute)
 
 // router.post('/createuser', createUser)
 
-// router.get('/orders', getOrderedList)
-
 // router.post('/payment', postPayment)
 
-router.post('/review', postReview)
 
 module.exports = router

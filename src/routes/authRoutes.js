@@ -1,3 +1,7 @@
+/**
+ * Route /auth/user
+ */
+
 const router = require('express').Router()
 const {
     signUpController,
@@ -9,13 +13,13 @@ const { signupValidator, signupValidationHandler } = require('../validator/user/
 const { loginValidator, loginValidationHandler } = require('../validator/user/loginValidation')
 
 
-// router.post('/signup',
-//     signupValidator,
-//     signupValidationHandler,
-//     signUpController
-// )
+router.post('/signup',
+    signupValidator,
+    signupValidationHandler,
+    signUpController
+)
 
-// router.post('/login', loginValidator, loginValidationHandler, loginController)
+router.post('/login', loginValidator, loginValidationHandler, loginController)
 
 router.get('/users', getUser)
 

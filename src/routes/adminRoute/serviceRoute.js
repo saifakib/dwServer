@@ -1,3 +1,7 @@
+/**
+ * Route /admin/service/
+ */
+
 const router = require('express').Router()
 const {
     getAllService,
